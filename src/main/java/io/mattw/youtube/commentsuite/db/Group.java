@@ -3,13 +3,11 @@ package io.mattw.youtube.commentsuite.db;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.time.LocalDateTime; 
 
 public class Group {
 
     private final String groupId;
     private String name;
-    private LocalDateTime lastRefreshed; 
 
     /**
      * Used when creating a new group.
@@ -17,20 +15,14 @@ public class Group {
     public Group(String name) {
         this.name = name;
         this.groupId = generateId();
-        this.lastRefreshed = null;
     }
 
     /**
      * Use for database init.
      */
-    public Group(String groupId, String name, LocalDateTime lastRefreshed) {
+    public Group(String groupId, String name) {
         this.groupId = groupId;
         this.name = name;
-        this.lastRefreshed = lastRefreshed;
-    }
-
-    public Group(String groupId, String name) {
-        this(groupId, name, null);
     }
 
     public String getGroupId() {
@@ -43,14 +35,6 @@ public class Group {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public LocalDateTime getLastRefreshed() {
-        return lastRefreshed;
-    }
-
-    public void setLastRefreshed(LocalDateTime lastRefreshed) {
-        this.lastRefreshed = lastRefreshed;
     }
 
     public String toString() {
