@@ -1,9 +1,0 @@
-ALTER TABLE groups ADD COLUMN last_refreshed DATETIME;
-
-UPDATE groups
-SET last_refreshed = (
-    SELECT MAX(last_checked)
-    FROM gitem_list
-    JOIN group_gitem USING (gitem_id)
-    WHERE group_gitem.group_id = groups.group_id
-);
